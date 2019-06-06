@@ -37,7 +37,11 @@ class Markdown extends React.Component {
 
   render() {
     const source = this.state.source;
-    return <div>{source && <ReactMarkdown source={source} />}</div>;
+    return (
+      <div id="markdown-output">
+        {source && <ReactMarkdown source={source} />}
+      </div>
+    );
   }
 }
 

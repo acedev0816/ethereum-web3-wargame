@@ -29,7 +29,7 @@ class App extends React.Component {
         <Root>
           <Router history={history}>
             <Ethernaut>
-              <Route component={Home} />
+              {/* <Route component={Home} /> */}
               <Route path={constants.PATH_HELP} component={Help} />
               <Route path={constants.PATH_LEVEL} component={Level} />
               <Route path={constants.PATH_STATS} component={Stats} />

@@ -1,6 +1,8 @@
 import * as actions from '../../actions';
 import * as constants from '../../constants';
 
+import { Label, PageHeader, Root, Title } from './Level.css';
+
 import Author from './Author';
 import CodeComponent from './Code';
 import Difficulty from './Difficulty';
@@ -61,40 +63,24 @@ class Level extends React.Component {
     const nextLevelId = findNextLevelId(this.props.level, this.props.levels);
 
     return (
-      <div className="page-container">
-        <div className="page-header row">
-          {/* TITLE + INFO */}
-          <div className="level-title col-sm-6">
-            <h2 className="title no-margin">{level.name}</h2>
-            {levelCompleted === true && (
-              <span className="label label-default">Level completed!</span>
-            )}
-          </div>
-          <div className="difficulty col-sm-6 right">
-            <Difficulty level={parseInt(level.difficulty, 10)} />
-          </div>
-          <div className="clearfix" />
-        </div>
+      <Root>
+        <PageHeader>
+          <Title>
+            {level.name}{' '}
+            {levelCompleted === true && <Label>Level completed!</Label>}
+          </Title>
+          <Difficulty level={parseInt(level.difficulty, 10)} />
+        </PageHeader>
 
-        {/* DESCRIPTION */}
         {description && <MarkdownComponent target={description} />}
 
-        {/* COMPLETED DESCRIPTION */}
-        {showCompletedDescription && (
-          <div style={{ marginTop: '40px', marginBottom: '40px' }}>
-            {completedDescription && (
-              <div className="well">
-                <MarkdownComponent target={completedDescription} />
-              </div>
-            )}
-          </div>
+        {showCompletedDescription && completedDescription && (
+          <MarkdownComponent target={completedDescription} />
         )}
 
-        {/* BUTTONS */}
         <div className="" style={{ marginTop: '5px' }}>
           {level.levelContract && (
             <div className="">
-              {/* CREATE */}
               <button
                 type="button"
                 className="btn btn-primary"
@@ -103,7 +89,6 @@ class Level extends React.Component {
                 Get new instance
               </button>
 
-              {/* SUBMIT */}
               {this.props.levelEmitted && (
                 <button
                   type="button"
@@ -114,7 +99,6 @@ class Level extends React.Component {
                 </button>
               )}
 
-              {/* NEXT LEVEL */}
               {levelCompleted && nextLevelId && (
                 <button
                   type="button"
@@ -132,7 +116,6 @@ class Level extends React.Component {
           )}
         </div>
 
-        {/* CODE */}
         {showCode && sourcesFile && (
           <div style={{ marginTop: '50px' }}>
             <div className="page-header">
@@ -142,9 +125,8 @@ class Level extends React.Component {
           </div>
         )}
 
-        {/* AUTHOR */}
         {level.author && <Author author={level.author} />}
-      </div>
+      </Root>
     );
   }
 }
