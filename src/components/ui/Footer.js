@@ -15,6 +15,7 @@ const Root = styled.footer`
   justify-content: center;
   font-size: 0.9rem;
   letter-spacing: 0.2px;
+  z-index: 3;
 `;
 
 export const Footer = () => (

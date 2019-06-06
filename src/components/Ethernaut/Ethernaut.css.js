@@ -15,7 +15,11 @@ export const Wrapper = styled.div`
 `;
 
 export const Main = styled.div`
-  padding: 0 30px 0;
+  padding: 0 30px 0 80px;
   width: 100%;
+
+  @media (min-width: 961px) {
+    padding: 0 30px 0;
+  }
 `;
 export const Content = styled.div``;
