@@ -1,15 +1,20 @@
+import {
+  AuthorBox,
+  AuthorItem,
+  Description,
+  Donate,
+  Headline,
+  Root,
+} from './Author.css.js';
+
 import React from 'react';
 
 class Author extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      name: undefined,
-      email: undefined,
-      website: undefined,
-    };
-  }
+  state = {
+    name: null,
+    email: null,
+    website: null,
+  };
 
   componentWillReceiveProps(nextProps) {
     this.fetchAuthorData(nextProps.author);
@@ -39,55 +44,44 @@ class Author extends React.Component {
     const { name, email, website, donate } = this.state;
     const nodata = !name && !email && !website && !donate;
     return (
-      <div>
-        <div style={{ marginTop: '20px', marginBotton: '20px' }}>
-          <h4>Level author</h4>
-
-          {nodata && <span>{this.props.author}</span>}
-
-          {!nodata && name && <span>{name}</span>}
-
+      <Root>
+        <Headline>Level author</Headline>
+        <AuthorBox>
+          {nodata && <AuthorItem>{this.props.author}</AuthorItem>}
+          {!nodata && name && <AuthorItem>{name}</AuthorItem>}
           {!nodata && email && (
-            <span>
-              <br />
-              <strong>
-                <a
-                  href={`mailto:${email}`}
-                  target="_blank"
-                  without
-                  rel="noopener noreferrer"
-                >
-                  {email}
-                </a>
-              </strong>
-            </span>
+            <AuthorItem>
+              <a
+                href={`mailto:${email}`}
+                target="_blank"
+                without
+                rel="noopener noreferrer"
+              >
+                {email}
+              </a>
+            </AuthorItem>
           )}
-
           {!nodata && website && (
-            <span>
-              <br />
-              <strong>
-                <a
-                  href={website}
-                  target="_blank"
-                  without
-                  rel="noopener noreferrer"
-                >
-                  {website}
-                </a>
-              </strong>
-            </span>
+            <AuthorItem>
+              <a
+                href={website}
+                target="_blank"
+                without
+                rel="noopener noreferrer"
+              >
+                {website}
+              </a>
+            </AuthorItem>
           )}
+        </AuthorBox>
 
-          {!nodata && donate && (
-            <span>
-              <br />
-              Did this level teach you anything useful? Donate to the level
-              author (on mainnet): <strong>{donate}</strong>
-            </span>
-          )}
-        </div>
-      </div>
+        {!nodata && donate && (
+          <Description>
+            Did this level teach you anything useful? Donate to the level author
+            (on mainnet): <Donate>{donate}</Donate>
+          </Description>
+        )}
+      </Root>
     );
   }
 }

@@ -23,32 +23,9 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div
-        className="row"
-        style={{
-          paddingLeft: '40px',
-          paddingRight: '40px',
-        }}
-      >
-        <div className="col-sm-12">
-          {/* TITLE */}
-          <h2 className="title">
-            The Ethernaut&nbsp;
-            <small style={{ fontSize: 10 }}>by</small>
-            <a
-              href="https://zeppelin.solutions"
-              target="_blank"
-              without
-              rel="noopener noreferrer"
-            >
-              <img
-                style={{ maxWidth: '120px' }}
-                src="../../imgs/zeppelin-by-logo.png"
-                alt="Zeppelin"
-              />
-            </a>
-          </h2>
-          {/* INFO */}
+      <div>
+        <div>
+          <h2>The Ethernaut</h2>
           <p>
             The Ethernaut is a Web3/Solidity based wargame inspired on{' '}
             <a
@@ -86,16 +63,10 @@ class Home extends React.Component {
               without
               rel="noopener noreferrer"
             >
-              <strong style={{ color: '#eb5424', fontWeight: 600 }}>
-                We are hiring!
-              </strong>
+              <strong>We are hiring!</strong>
             </a>
           </p>
-          <button
-            style={{ marginTop: '10px' }}
-            className="btn btn-primary"
-            onClick={() => this.navigateToFirstIncompleteLevel()}
-          >
+          <button onClick={() => this.navigateToFirstIncompleteLevel()}>
             Play now!
           </button>
         </div>

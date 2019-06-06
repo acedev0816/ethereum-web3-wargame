@@ -10,6 +10,9 @@ export const Root = styled.nav`
   position: relative;
   display: flex;
   flex-direction: column;
+  min-height: 100%;
+  height: 100%;
+  align-self: stretch;
 `;
 
 export const Title = styled.h2`
@@ -25,12 +28,14 @@ export const Title = styled.h2`
   box-sizing: border-box;
 `;
 
-export const LevelList = styled.nav`
+export const LevelList = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
   padding-top: 15px;
 `;
+
+export const LevelItem = styled.li``;
 
 export const LevelName = styled(NavLink)`
   font-weight: 600;

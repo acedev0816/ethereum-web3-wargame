@@ -1,8 +1,14 @@
 import * as constants from '../../constants';
 
-import { LevelList, LevelName, NewLabel, Root, Title } from './Sidebar.css';
+import {
+  LevelItem,
+  LevelList,
+  LevelName,
+  NewLabel,
+  Root,
+  Title,
+} from './Sidebar.css';
 
-import { NavLink } from 'react-router-dom';
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -33,14 +39,16 @@ class Sidebar extends React.Component {
               moment.duration(moment().diff(creationDate)).asDays() || 0;
 
             return (
-              <LevelName
-                activeClassName={active}
-                key={idx}
-                to={`${constants.PATH_LEVEL_ROOT}${level.deployedAddress}`}
-              >
-                {`${idx}. ${level.name}${levelComplete ? ' ✔' : ''}`}
-                {ago < 14 && <NewLabel>New!</NewLabel>}
-              </LevelName>
+              <LevelItem>
+                <LevelName
+                  activeClassName={active}
+                  key={idx}
+                  to={`${constants.PATH_LEVEL_ROOT}${level.deployedAddress}`}
+                >
+                  {`${idx}. ${level.name}${levelComplete ? ' ✔' : ''}`}
+                  {ago < 14 && <NewLabel>New!</NewLabel>}
+                </LevelName>
+              </LevelItem>
             );
           })}
         </LevelList>

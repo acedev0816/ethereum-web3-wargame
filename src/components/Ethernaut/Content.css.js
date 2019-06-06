@@ -6,5 +6,5 @@ export const Root = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  padding: 0 25px;
+  padding: 0 30px;
 `;

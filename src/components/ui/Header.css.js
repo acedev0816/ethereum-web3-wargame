@@ -7,7 +7,7 @@ export const Root = styled.div`
   line-height: 68px;
   border-bottom: solid 1px #d8d8d8;
   width: 100%;
-  padding: 20px 25px;
+  padding: 20px 1px;
   box-sizing: border-box;
 
   > * {

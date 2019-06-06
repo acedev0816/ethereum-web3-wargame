@@ -6,6 +6,10 @@ export const Root = styled.div`
 `;
 
 export const Wrapper = styled.div`
+  background-color: #f8f8fa;
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: stretch;
 `;
