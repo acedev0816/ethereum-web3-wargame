@@ -39,9 +39,9 @@ class Sidebar extends React.Component {
               moment.duration(moment().diff(creationDate)).asDays() || 0;
 
             return (
-              <LevelItem>
+              <LevelItem key={idx}>
                 <LevelName
-                  activeClassName={active}
+                  activeClassName={active ? 'active' : ''}
                   key={idx}
                   to={`${constants.PATH_LEVEL_ROOT}${level.deployedAddress}`}
                 >

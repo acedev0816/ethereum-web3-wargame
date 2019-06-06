@@ -1,35 +1,5 @@
 import styled from 'styled-components';
 
-export const Root = styled.div``;
-
-export const PageHeader = styled.div`
-  /* padding: 0 30px; */
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
-  > *:first-child {
-    flex: 1;
-  }
-  > *:last-child {
-    flex: 0;
-  }
-
-  border-bottom: 1px solid #d8d8d8;
-  padding-bottom: 10px;
-  margin-bottom: 15px;
-  box-sizing: border-box;
-`;
-
-export const Title = styled.h1`
-  font-size: 1.8rem;
-  font-weight: 500;
-`;
-
-export const Label = styled.small`
-  padding: 0 30px;
-`;
-
 export const Button = styled.a`
   display: inline-block;
   background: #4e5ee4;
@@ -54,8 +24,4 @@ export const Button = styled.a`
     background-color: #4755cc;
     cursor: pointer;
   }
-`;
-
-export const LevelContract = styled.div`
-  margin: 25px 0;
 `;

@@ -54,7 +54,7 @@ class Author extends React.Component {
               <a
                 href={`mailto:${email}`}
                 target="_blank"
-                without
+                without="true"
                 rel="noopener noreferrer"
               >
                 {email}
@@ -66,7 +66,7 @@ class Author extends React.Component {
               <a
                 href={website}
                 target="_blank"
-                without
+                without="true"
                 rel="noopener noreferrer"
               >
                 {website}

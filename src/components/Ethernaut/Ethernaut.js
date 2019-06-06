@@ -1,7 +1,6 @@
-import { Root, Wrapper } from './Ethernaut.css';
+import { Footer, Header, Page } from '../ui';
+import { Main, Root, Wrapper } from './Ethernaut.css';
 
-import Content from './Content';
-import Footer from '../ui/Footer';
 import React from 'react';
 import Sidebar from './Sidebar';
 
@@ -10,7 +9,10 @@ const Home = ({ children }) => {
     <Root>
       <Wrapper>
         <Sidebar />
-        <Content>{children}</Content>
+        <Main>
+          <Header />
+          <>{children}</>
+        </Main>
       </Wrapper>
       <Footer />
     </Root>

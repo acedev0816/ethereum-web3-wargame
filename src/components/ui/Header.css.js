@@ -1,3 +1,4 @@
+import { inheritable } from 'ethers/utils/properties';
 import styled from 'styled-components';
 
 export const Root = styled.div`
@@ -38,5 +39,10 @@ export const Menu = styled.ul`
 `;
 
 export const Item = styled.li`
+  letter-spacing: 0.2px;
   margin-left: 30px;
+
+  a {
+    color: inherit;
+  }
 `;

@@ -2,12 +2,12 @@ import * as actions from '../actions';
 import * as constants from '../constants';
 
 const initialState = {
-  address: undefined,
+  address: null,
   completedLevels: {},
   emittedLevels: {},
 };
 
-export default function(state = initialState, action) {
+export default function(state = initialState, action = {}) {
   let newState;
   switch (action.type) {
     case actions.CHECK_ALL_COMPLETED:

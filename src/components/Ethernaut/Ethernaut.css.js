@@ -13,3 +13,9 @@ export const Wrapper = styled.div`
   align-items: stretch;
   align-content: stretch;
 `;
+
+export const Main = styled.div`
+  padding: 0 30px 0;
+  width: 100%;
+`;
+export const Content = styled.div``;

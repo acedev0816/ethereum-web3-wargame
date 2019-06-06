@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Root = styled.nav`
+  min-width: 200px;
   width: 200px;
   padding: 0 25px;
   background-color: #f8f8fa;
@@ -42,6 +43,12 @@ export const LevelName = styled(NavLink)`
   color: #868699;
   margin-bottom: 15px;
   display: flex;
+  transition: color 0.2s ease;
+  letter-spacing: 0.2px;
+
+  :hover {
+    color: #757584;
+  }
 
   &.${(props) => props.activeClassName} {
     color: #5969e8;

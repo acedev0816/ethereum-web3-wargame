@@ -55,7 +55,7 @@ const LogoSVG = () => {
   );
 };
 
-export default () => (
+export const Logo = () => (
   <h1>
     <LogoSVG />
   </h1>

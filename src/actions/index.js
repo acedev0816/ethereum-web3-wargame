@@ -33,7 +33,7 @@ export const loadLevelInstance = (level, reuse) => ({
   type: LOAD_LEVEL_INSTANCE,
   level,
   reuse,
-  instance: undefined,
+  instance: {},
 });
 
 export const SUBMIT_LEVEL_INSTANCE = 'SUBMIT_LEVEL_INSTANCE';

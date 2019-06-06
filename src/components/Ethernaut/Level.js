@@ -1,12 +1,20 @@
 import * as actions from '../../actions';
 import * as constants from '../../constants';
 
-import { Label, PageHeader, Root, Title } from './Level.css';
+import {
+  Button,
+  Label,
+  LevelContract,
+  PageHeader,
+  Root,
+  Title,
+} from './Level.css';
 
 import Author from './Author';
 import CodeComponent from './Code';
 import Difficulty from './Difficulty';
 import MarkdownComponent from './Markdown';
+import { Page } from '../ui';
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -63,7 +71,7 @@ class Level extends React.Component {
     const nextLevelId = findNextLevelId(this.props.level, this.props.levels);
 
     return (
-      <Root>
+      <Page>
         <PageHeader>
           <Title>
             {level.name}{' '}
@@ -78,31 +86,25 @@ class Level extends React.Component {
           <MarkdownComponent target={completedDescription} />
         )}
 
-        <div className="" style={{ marginTop: '5px' }}>
+        <LevelContract>
           {level.levelContract && (
-            <div className="">
-              <button
-                type="button"
-                className="btn btn-primary"
-                onClick={(evt) => this.props.loadLevelInstance(level, false)}
+            <div>
+              <Button
+                onClick={() => this.props.loadLevelInstance(level, false)}
               >
                 Get new instance
-              </button>
+              </Button>
 
               {this.props.levelEmitted && (
-                <button
-                  type="button"
-                  className="btn btn-warning"
+                <Button
                   onClick={(evt) => this.props.submitLevelInstance(level)}
                 >
                   Submit instance
-                </button>
+                </Button>
               )}
 
               {levelCompleted && nextLevelId && (
-                <button
-                  type="button"
-                  className="btn btn-info"
+                <Button
                   onClick={(evt) =>
                     this.props.router.push(
                       `${constants.PATH_LEVEL_ROOT}${nextLevelId}`
@@ -110,11 +112,11 @@ class Level extends React.Component {
                   }
                 >
                   Go to the next level!
-                </button>
+                </Button>
               )}
             </div>
           )}
-        </div>
+        </LevelContract>
 
         {showCode && sourcesFile && (
           <div style={{ marginTop: '50px' }}>
@@ -126,7 +128,7 @@ class Level extends React.Component {
         )}
 
         {level.author && <Author author={level.author} />}
-      </Root>
+      </Page>
     );
   }
 }

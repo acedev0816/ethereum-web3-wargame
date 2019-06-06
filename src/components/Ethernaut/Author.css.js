@@ -20,9 +20,9 @@ export const AuthorBox = styled.div`
 export const AuthorItem = styled.span`
   display: flex-item;
   font-weight: bold;
-  padding-right: 15px;
-  margin-right: 15px;
-  border-right: 1px solid black;
+  padding-right: 7px;
+  margin-right: 7px;
+  border-right: 2px solid #282745;
 
   &:last-child {
     border: none;
@@ -35,5 +35,7 @@ export const AuthorItem = styled.span`
 
 export const Description = styled.p``;
 export const Donate = styled.span`
+  font-size: 1rem;
+  font-weight: 500;
   color: #4e5ee4;
 `;

@@ -1,6 +1,6 @@
 import * as constants from '../constants';
 
-import { Route, BrowserRouter as Router } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 
 import Ethernaut from './Ethernaut/Ethernaut';
 import Help from './Ethernaut/Help';
@@ -29,11 +29,13 @@ class App extends React.Component {
         <Root>
           <Router history={history}>
             <Ethernaut>
-              {/* <Route component={Home} /> */}
-              <Route path={constants.PATH_HELP} component={Help} />
-              <Route path={constants.PATH_LEVEL} component={Level} />
-              <Route path={constants.PATH_STATS} component={Stats} />
-              <Route path="*" exact component={NotFoundPage} />
+              <Switch>
+                <Route path="/" exact component={Home} />
+                <Route path={constants.PATH_HELP} component={Help} />
+                <Route path={constants.PATH_LEVEL} component={Level} />
+                <Route path={constants.PATH_STATS} component={Stats} />
+                <Route path="*" exact component={NotFoundPage} />
+              </Switch>
             </Ethernaut>
           </Router>
         </Root>

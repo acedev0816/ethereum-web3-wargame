@@ -1,19 +1,26 @@
 import { Item, Menu, Root } from './Header.css';
 
-import Logo from './Logo';
+import { Link } from 'react-router-dom';
+import { Logo } from './Logo';
 import React from 'react';
 
-const Header = () => {
+export const Header = () => {
   return (
     <Root>
-      <Logo />
+      <Link to="/">
+        <Logo />
+      </Link>
       <Menu>
-        <Item>Forum</Item>
-        <Item>About</Item>
-        <Item>Help</Item>
+        <Item>
+          <Link to="/">Forum</Link>
+        </Item>
+        <Item>
+          <Link to="/">About</Link>
+        </Item>
+        <Item>
+          <Link to="/help">Help</Link>
+        </Item>
       </Menu>
     </Root>
   );
 };
-
-export default Header;
