@@ -38,7 +38,8 @@ class Home extends React.Component {
             <a
               href="https://zeppelin.solutions"
               target="_blank"
-              rel="noopener noreferred"
+              without
+              rel="noopener noreferrer"
             >
               <img
                 style={{ maxWidth: '120px' }}
@@ -53,7 +54,8 @@ class Home extends React.Component {
             <a
               href="https://overthewire.org"
               target="_blank"
-              rel="noopener noreferred"
+              without
+              rel="noopener noreferrer"
             >
               overthewire.org
             </a>
@@ -64,7 +66,12 @@ class Home extends React.Component {
             The game is 100% open source and all levels are contributions made
             by other players. Do you have an interesting idea? PRs are welcome
             at{' '}
-            <a href="https://github.com/OpenZeppelin/ethernaut">
+            <a
+              href="https://github.com/OpenZeppelin/ethernaut"
+              target="_blank"
+              without
+              rel="noopener noreferrer"
+            >
               github.com/OpenZeppelin/ethernaut
             </a>
             .
@@ -76,7 +83,8 @@ class Home extends React.Component {
             <a
               href="https://zeppelin.solutions/jobs"
               target="_blank"
-              rel="noopener noreferred"
+              without
+              rel="noopener noreferrer"
             >
               <strong style={{ color: '#eb5424', fontWeight: 600 }}>
                 We are hiring!

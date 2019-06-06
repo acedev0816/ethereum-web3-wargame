@@ -64,7 +64,7 @@ export default (store) => (next) => (action) => {
   if (!instanceAddress) return;
   console.info(`=> Instance address\n${instanceAddress}`);
   const Instance = ethutil.getTruffleContract(
-    require(`../output/contracts/${withoutExtension(
+    require(`../contracts/${withoutExtension(
       action.level.instanceContract
     )}.json`),
     {

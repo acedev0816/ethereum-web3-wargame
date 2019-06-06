@@ -1,7 +1,7 @@
 import * as actions from '../actions';
 import * as ethutil from '../utils/ethutil';
 
-import EthernautABI from '../output/contracts/Ethernaut.json';
+import EthernautABI from '../contracts/Ethernaut.json';
 
 export default (store) => (next) => (action) => {
   if (action.type !== actions.LOAD_ETHERNAUT_CONTRACT) return next(action);
