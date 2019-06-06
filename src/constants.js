@@ -5,7 +5,7 @@ export const DEBUG_REDUX = DEBUG;
 
 // Networks
 export const NETWORKS = {
-  UNDEFINED: undefined,
+  null: null,
   LOCAL: {
     name: 'local',
     id: '*',
@@ -29,7 +29,7 @@ export const GOOGLE_ANALYTICS_ID = 'UA-85043059-4';
 
 // Owner addresses
 export const ADDRESSES = {
-  [NETWORKS.LOCAL.name]: undefined,
+  [NETWORKS.LOCAL.name]: null,
   [NETWORKS.ROPSTEN.name]: '0x1663fcb2f6566723a4c429f8ed34352726680f9a',
 };
 

@@ -14,7 +14,8 @@ import { connect } from 'react-redux';
 
 class Level extends React.Component {
   componentWillMount() {
-    this.props.activateLevel(this.props.match.params.address);
+    if (this.props.match.params.address)
+      this.props.activateLevel(this.props.match.params.address);
   }
 
   componentWillUnmount() {
@@ -24,12 +25,14 @@ class Level extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.level.deployedAddress !== nextProps.match.params.address)
-      this.props.activateLevel(nextProps.match.params.address);
+    if (nextProps.level) {
+      if (nextProps.level.deployedAddress !== nextProps.match.params.address)
+        this.props.activateLevel(nextProps.match.params.address);
+    }
   }
 
   render() {
-    const { level, levelCompleted } = this.props;
+    const { level = {}, levelCompleted } = this.props;
 
     if (!level) return null;
     const showCode = levelCompleted || level.revealCode;
@@ -145,7 +148,7 @@ function mapStateToProps(state) {
     levelCompleted:
       level && state.player.completedLevels[level.deployedAddress] > 0,
     levelEmitted:
-      level && state.contracts.levels[level.deployedAddress] !== undefined,
+      level && state.contracts.levels[level.deployedAddress] !== null,
   };
 }
 

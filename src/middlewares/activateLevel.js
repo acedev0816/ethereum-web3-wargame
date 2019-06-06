@@ -36,7 +36,7 @@ export default (store) => (next) => (action) => {
 
   // Remove contract reference
   window.contract = `No contract set, go to a level and click 'Get new instance'`;
-  window.instance = undefined;
+  window.instance = null;
 
   // -> 404
   if (!activeLevel) {

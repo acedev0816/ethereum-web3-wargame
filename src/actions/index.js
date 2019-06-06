@@ -14,12 +14,12 @@ export const setPlayerAddress = (address) => ({
 });
 
 export const LOAD_GAME_DATA = 'LOAD_GAME_DATA';
-export const loadGamedata = () => ({ type: LOAD_GAME_DATA, levels: undefined });
+export const loadGamedata = () => ({ type: LOAD_GAME_DATA, levels: null });
 
 export const LOAD_ETHERNAUT_CONTRACT = 'LOAD_ETHERNAUT_CONTRACT';
 export const loadEthernautContract = () => ({
   type: LOAD_ETHERNAUT_CONTRACT,
-  contract: undefined,
+  contract: null,
 });
 
 export const ACTIVATE_LEVEL = 'ACTIVATE_LEVEL';

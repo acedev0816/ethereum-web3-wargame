@@ -18,6 +18,7 @@ export const Root = styled.nav`
   transition: width 0.35s ease-in-out;
   transition-property: width, padding;
   box-shadow: 0 8px 14px 0 rgba(40, 40, 70, 0.2);
+  min-height: 100vh;
 
   > .h-icon {
     display: block;
@@ -27,6 +28,7 @@ export const Root = styled.nav`
     z-index: 0;
     position: relative;
     width: 200px;
+    min-width: 200px;
     padding: 0 25px;
     box-shadow: none;
     > .h-icon {

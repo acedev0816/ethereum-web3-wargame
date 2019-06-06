@@ -33,7 +33,7 @@ class Code extends React.Component {
           source: text,
         });
       })
-      .catch(this.setState({ source: undefined }));
+      .catch(this.setState({ source: null }));
   }
 
   render() {

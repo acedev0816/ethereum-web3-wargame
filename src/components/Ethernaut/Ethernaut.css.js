@@ -17,6 +17,7 @@ export const Wrapper = styled.div`
 export const Main = styled.div`
   padding: 0 30px 0 80px;
   width: 100%;
+  background-color: white;
 
   @media (min-width: 961px) {
     padding: 0 30px 0;

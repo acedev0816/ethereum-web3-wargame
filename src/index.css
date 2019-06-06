@@ -89,6 +89,7 @@ a {
 
 #markdown-output pre > code {
   font-family: monospace;
+  background-color: transparent;
 }
 
 #markdown-output code {

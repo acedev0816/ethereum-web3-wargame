@@ -26,7 +26,7 @@ class ConsoleDetect extends React.Component {
   render() {
     console.log(this.state);
     if (this.state.consoleIsOpen === true) return null;
-    return <span>OPEN YOUR CONSOLE TO PLAY</span>;
+    return <span />;
   }
 }
 

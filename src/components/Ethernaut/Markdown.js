@@ -6,8 +6,8 @@ class Markdown extends React.Component {
   constructor() {
     super();
     this.state = {
-      target: undefined,
-      source: undefined,
+      target: null,
+      source: null,
     };
   }
 
@@ -31,7 +31,7 @@ class Markdown extends React.Component {
       const text = await loadText(target);
       this.setState({ target: target, source: text });
     } catch (error) {
-      this.setState({ source: undefined });
+      this.setState({ source: null });
     }
   }
 

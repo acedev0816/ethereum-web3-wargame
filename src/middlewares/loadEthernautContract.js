@@ -5,7 +5,7 @@ import EthernautABI from '../contracts/Ethernaut.json';
 
 export default (store) => (next) => (action) => {
   if (action.type !== actions.LOAD_ETHERNAUT_CONTRACT) return next(action);
-  if (action.contract !== undefined) return next(action);
+  if (action.contract !== null) return next(action);
 
   const state = store.getState();
   if (
