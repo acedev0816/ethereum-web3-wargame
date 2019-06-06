@@ -1,31 +1,31 @@
 import * as constants from '../../constants';
 
-import { Link } from 'react-router-dom';
+import { LevelList, LevelName, NewLabel, Root, Title } from './Sidebar.css';
+
+import { NavLink } from 'react-router-dom';
 import React from 'react';
-import { Root } from './Sidebar.css';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import moment from 'moment';
 
 class Sidebar extends React.Component {
   render() {
+    const { activeLevel, player } = this.props;
     return (
       <Root>
-        <h4 className="levels-list-title">Levels</h4>
-        <div className="levels-list">
+        <Title>Levels</Title>
+        <LevelList>
           {this.props.levels.map((level, idx) => {
-            let linkStyle = {};
-            if (this.props.activeLevel) {
-              if (
-                this.props.activeLevel.deployedAddress === level.deployedAddress
-              ) {
-                linkStyle.textDecoration = 'underline';
+            let active = false;
+            if (activeLevel) {
+              if (activeLevel.deployedAddress === level.deployedAddress) {
+                active = true;
               }
             }
 
             // Level completed
             const levelComplete =
-              this.props.player.completedLevels[level.deployedAddress] > 0;
+              player.completedLevels[level.deployedAddress] > 0;
 
             // Created
             const creationDate = moment(level.created);
@@ -33,25 +33,17 @@ class Sidebar extends React.Component {
               moment.duration(moment().diff(creationDate)).asDays() || 0;
 
             return (
-              <div key={idx}>
-                <Link
-                  to={`${constants.PATH_LEVEL_ROOT}${level.deployedAddress}`}
-                >
-                  <span style={linkStyle}>
-                    {`${idx}. ${level.name}${levelComplete ? ' ✔' : ''}`}
-                  </span>
-                  {ago < 14 && (
-                    <img
-                      style={{ width: '20px', height: '20px' }}
-                      src="../../imgs/new.png"
-                      alt="new"
-                    />
-                  )}
-                </Link>
-              </div>
+              <LevelName
+                activeClassName={active}
+                key={idx}
+                to={`${constants.PATH_LEVEL_ROOT}${level.deployedAddress}`}
+              >
+                {`${idx}. ${level.name}${levelComplete ? ' ✔' : ''}`}
+                {ago < 14 && <NewLabel>New!</NewLabel>}
+              </LevelName>
             );
           })}
-        </div>
+        </LevelList>
       </Root>
     );
   }

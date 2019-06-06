@@ -11,7 +11,6 @@ import { connect } from 'react-redux';
 
 class Level extends React.Component {
   componentWillMount() {
-    console.log(this.props);
     this.props.activateLevel(this.props.match.params.address);
   }
 
