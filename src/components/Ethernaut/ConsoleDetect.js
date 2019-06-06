@@ -2,12 +2,9 @@ import DevToolsDetect from 'devtools-detect';
 import React from 'react';
 
 class ConsoleDetect extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      consoleIsOpen: !DevToolsDetect.open,
-    };
-  }
+  state = {
+    consoleIsOpen: !DevToolsDetect.open,
+  };
 
   componentDidMount() {
     window.addEventListener('resize', () => {
@@ -27,12 +24,9 @@ class ConsoleDetect extends React.Component {
   }
 
   render() {
+    console.log(this.state);
     if (this.state.consoleIsOpen === true) return null;
-    return (
-      <span style={{ fontSize: '12px' }} className="text-muted">
-        OPEN YOUR CONSOLE TO PLAY
-      </span>
-    );
+    return <span>OPEN YOUR CONSOLE TO PLAY</span>;
   }
 }
 

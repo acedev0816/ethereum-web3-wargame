@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-export const Root = styled.div``;
-
 export const PageHeader = styled.div`
   /* padding: 0 30px; */
   display: flex;

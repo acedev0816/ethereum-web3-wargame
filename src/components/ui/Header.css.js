@@ -1,4 +1,3 @@
-import { inheritable } from 'ethers/utils/properties';
 import styled from 'styled-components';
 
 export const Root = styled.div`

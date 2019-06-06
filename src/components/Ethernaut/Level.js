@@ -1,14 +1,7 @@
 import * as actions from '../../actions';
 import * as constants from '../../constants';
 
-import {
-  Button,
-  Label,
-  LevelContract,
-  PageHeader,
-  Root,
-  Title,
-} from './Level.css';
+import { Button, Label, LevelContract, PageHeader, Title } from './Level.css';
 
 import Author from './Author';
 import CodeComponent from './Code';

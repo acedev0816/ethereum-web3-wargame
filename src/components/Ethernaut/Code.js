@@ -5,13 +5,10 @@ import React from 'react';
 import loadText from '../../utils/textloader';
 
 class Code extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      target: undefined,
-      source: undefined,
-    };
-  }
+  state = {
+    target: null,
+    source: null,
+  };
 
   componentDidMount() {
     this.loadContents(this.props.target);

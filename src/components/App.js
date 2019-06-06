@@ -1,6 +1,6 @@
 import * as constants from '../constants';
 
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import { Route, Router, Switch } from 'react-router-dom';
 
 import Ethernaut from './Ethernaut/Ethernaut';
 import Help from './Ethernaut/Help';
