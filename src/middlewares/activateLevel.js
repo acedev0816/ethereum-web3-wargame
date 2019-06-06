@@ -23,8 +23,10 @@ export default (store) => (next) => (action) => {
   if (constants.CLEAR_CONSOLE && constants.CUSTOM_LOGGING && activeLevel) {
     console.clear();
   }
-  if (activeLevel) console.greet(activeLevel.name);
-  console.secret(`Type help() for a listing of custom web3 addons`);
+  if (activeLevel && console.greet) console.greet(activeLevel.name);
+
+  if (console.secret)
+    console.secret(`Type help() for a listing of custom web3 addons`);
   const isChrome = !!window.chrome && !!window.chrome.webstore;
   if (isChrome) {
     console.quiet(

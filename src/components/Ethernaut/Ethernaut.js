@@ -5,12 +5,12 @@ import Footer from '../ui/Footer';
 import React from 'react';
 import Sidebar from './Sidebar';
 
-const Home = () => {
+const Home = ({ children }) => {
   return (
     <Root>
       <Wrapper>
         <Sidebar />
-        <Content>Content</Content>
+        <Content>{children}</Content>
       </Wrapper>
       <Footer />
     </Root>

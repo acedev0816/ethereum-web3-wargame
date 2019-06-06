@@ -11,7 +11,8 @@ import { connect } from 'react-redux';
 
 class Level extends React.Component {
   componentWillMount() {
-    this.props.activateLevel(this.props.routeParams.address);
+    console.log(this.props);
+    this.props.activateLevel(this.props.match.params.address);
   }
 
   componentWillUnmount() {
@@ -21,8 +22,8 @@ class Level extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.level.deployedAddress !== nextProps.routeParams.address)
-      this.props.activateLevel(nextProps.routeParams.address);
+    if (nextProps.level.deployedAddress !== nextProps.match.params.address)
+      this.props.activateLevel(nextProps.match.params.address);
   }
 
   render() {
