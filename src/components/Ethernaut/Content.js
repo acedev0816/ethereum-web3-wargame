@@ -6,8 +6,10 @@ import React from 'react';
 const Content = ({ children }) => {
   return (
     <Root>
-      <Header />
-      <Wrapper>{children}</Wrapper>
+      <Wrapper>
+        <Header />
+        {children}
+      </Wrapper>
     </Root>
   );
 };

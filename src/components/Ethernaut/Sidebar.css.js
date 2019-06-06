@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const Root = styled.nav`
   width: 200px;
-  padding: 25px;
+  padding: 0 25px;
   background-color: #f8f8fa;
   color: #282846;
   height: 100%;
@@ -13,12 +13,16 @@ export const Root = styled.nav`
 `;
 
 export const Title = styled.h2`
+  margin: 0;
   font-size: 1rem;
   color: #282846;
   border-bottom: 1px solid #d8d8d8;
   padding-bottom: 25px;
   margin-bottom: 25px;
   font-weight: 400;
+  height: 68px;
+  line-height: 68px;
+  box-sizing: border-box;
 `;
 
 export const LevelList = styled.nav`
