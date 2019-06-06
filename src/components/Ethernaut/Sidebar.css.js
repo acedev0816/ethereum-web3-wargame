@@ -9,15 +9,13 @@ export const Root = styled.nav`
   width: 60px;
   background-color: #f8f8fa;
   color: #282846;
-  height: 100%;
-  height: 100%;
   align-self: stretch;
   z-index: 2;
   overflow: hidden;
-  min-height: 100%;
   transition: width 0.35s ease-in-out;
   transition-property: width, padding;
   box-shadow: 0 8px 14px 0 rgba(40, 40, 70, 0.2);
+  height: 100%;
   min-height: 100vh;
 
   > .h-icon {
@@ -56,6 +54,7 @@ export const Title = styled.h2`
   height: 68px;
   line-height: 68px;
   box-sizing: border-box;
+  width: 100%;
 `;
 
 export const LevelList = styled.ul`
@@ -102,6 +101,7 @@ export const Icon = ({ show, onShowMenu = () => {} }) => (
 );
 
 export const Content = styled.div`
+  width: 100%;
   display: none;
 
   @media (min-width: 961px) {
