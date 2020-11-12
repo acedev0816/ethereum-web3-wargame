@@ -70,7 +70,7 @@ window.addEventListener('load', async() => {
       store.dispatch(actions.setPlayerAddress(player))
       store.dispatch(actions.loadEthernautContract())
 
-      console.info(`You're on the Ropsten Ethernaut - our main version is on Rinkeby at https://ethernaut.opnzeppelin.com`)
+      console.info(`You're on the Ropsten Ethernaut - our main version is on Rinkeby at https://ethernaut.openzeppelin.com`)
 
       ethutil.watchAccountChanges(acct => {
         store.dispatch(actions.setPlayerAddress(acct))
