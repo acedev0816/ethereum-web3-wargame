@@ -16,7 +16,7 @@ a {
 
 .container {
   min-height: 100vh;
-  padding: 0 0.5rem;
+  padding: 0 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -50,15 +50,22 @@ a {
   height: 100px;
   border-top: 1px solid #eaeaea;
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
   align-items: center;
+  text-align: center;
 }
 
 .footer a {
   text-decoration: none;
 }
 
-.footer img {
+.footer .logo {
   margin-left: 0.5rem;
   vertical-align: -0.4em;
+}
+
+.footer .github {
+  margin-right: 0.5rem;
+  vertical-align: bottom;
 }
