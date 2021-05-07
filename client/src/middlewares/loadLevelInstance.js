@@ -28,14 +28,9 @@ export default store => next => action => {
     }
 
     // const estimate = await state.contracts.ethernaut.getLevelInstance.estimateGas(action.level.deployedAddress)
-    const estimate = parseInt(action.level.instanceGas, 10) || 2000000
-    const deployFunds = state.network.web3.utils.toWei(parseInt(action.level.deployFunds, 10).toString(), 'ether')
-    state.contracts.ethernaut.createLevelInstance(action.level.deployedAddress, {
-      gas: estimate.toString(),
-      gasPrice: 2 * state.network.gasPrice,
-      from: state.player.address,
-      value: deployFunds
-    })
+    // const estimate = parseInt(action.level.instanceGas, 10) || 2000000
+    // const deployFunds = state.network.web3.utils.toWei(parseInt(action.level.deployFunds, 10).toString(), 'ether')
+    state.contracts.ethernaut.methods.createLevelInstance(action.level.deployedAddress)
       .then(tx => {
         console.dir(tx)
         instanceAddress = tx.logs[0].args.instance;
@@ -56,26 +51,29 @@ export default store => next => action => {
   // Get instance from address
   if(!instanceAddress) return
   console.info(`=> Instance address\n${instanceAddress}`)
-  const Instance = ethutil.getTruffleContract(
+
+  const Instance = new ethutil.ContractInstance(
     require(`contracts/build/contracts/levels/${action.level.instanceContract}/${withoutExtension(action.level.instanceContract)}.json`),
     {
       from: state.player.address,
       gasPrice: 2 * state.network.gasPrice
     }
   )
-  Instance.at(instanceAddress)
-    .then(instance => {
-      window.instance = instance.address;
+
+  Instance.at(instanceAddress).then(instance => {
+    try {
+      window.instance = instance.options.address;
       window.contract = instance;
       action.instance = instance;
       next(action);
-    })
-    .catch(err => {
+    }
+    catch(err) {
       console.log(`Error: ${err}, retrying...`);
       setTimeout(() => {
         store.dispatch(action);
       }, 1000);
-    })
+    };
+  });
 }
 
 // ----------------------------------

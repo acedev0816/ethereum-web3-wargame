@@ -6,7 +6,7 @@ import * as ethutil from '../src/utils/ethutil.js';
 import * as constants from '../src/constants.js';
 import HDWalletProvider from '@truffle/hdwallet-provider';
 import * as gamedata from '../src/gamedata/gamedata.json';
-import * as EthernautABI from 'contracts/build/contracts/Ethernaut.sol/Ethernaut.json';
+import * as EthernautJSON from 'contracts/build/contracts/Ethernaut.sol/Ethernaut.json';
 
 let web3;
 let ethernaut;
@@ -62,13 +62,14 @@ async function deployContracts(deployData) {
   console.log("FROM: ", from)
 
   // Deploy/retrieve ethernaut contract
-  const Ethernaut = await ethutil.getTruffleContract(EthernautABI.default, {from})
+  const Ethernaut = new ethutil.ContractInstance(EthernautJSON.default, {from})
+
   if(needsDeploy(deployData.ethernaut)) {
 		console.log(deployData);
     console.log(`Deploying Ethernaut.sol...`);
-    ethernaut = await Ethernaut.new(props)
-    console.log(colors.yellow(`  Ethernaut: ${ethernaut.address}`));
-    deployData.ethernaut = ethernaut.address;
+    ethernaut = await Ethernaut.new([], props);
+    console.log(colors.yellow(`  Ethernaut: ${ethernaut.options.address}`));
+    deployData.ethernaut = ethernaut.options.address;
   }
   else {
     console.log('Using deployed Ethernaut.sol:', deployData.ethernaut);
@@ -84,16 +85,16 @@ async function deployContracts(deployData) {
         console.log(`Deploying ${level.levelContract}, deployId: ${level.deployId}...`);
 
         // Deploy contract
-        const LevelABI = JSON.parse(fs.readFileSync(`contracts/build/contracts/levels/${level.levelContract}/${withoutExtension(level.levelContract)}.json`, 'utf-8'))
-        const Contract = await ethutil.getTruffleContract(LevelABI, {from})
-        const contract = await Contract.new(...level.deployParams, props)
-        console.log(colors.yellow(`  ${level.name}: ${contract.address}`));
-        deployData[level.deployId] = contract.address
-        console.log(colors.gray(`  storing deployed id: ${level.deployId} with address: ${contract.address}`));
+        const LevelJSON = JSON.parse(fs.readFileSync(`contracts/build/contracts/levels/${level.levelContract}/${withoutExtension(level.levelContract)}.json`, 'utf-8'))
+        const Contract = new ethutil.ContractInstance(LevelJSON, {from})
+        const contract = await Contract.new(level.deployParams, props);
+        console.log(colors.yellow(`  ${level.name}: ${contract.options.address}`));
+        deployData[level.deployId] = contract.options.address
+        console.log(colors.gray(`  storing deployed id: ${level.deployId} with address: ${contract.options.address}`));
 
         // Register level in Ethernaut contract
         console.log(`  Registering level ${level.levelContract} in Ethernaut.sol...`)
-        const tx = await ethernaut.registerLevel(contract.address, props);
+        const tx = await ethernaut.methods.registerLevel(contract.options.address);
         console.log(`Registered ${level.levelContract}!`)
         // console.log(tx)
       }

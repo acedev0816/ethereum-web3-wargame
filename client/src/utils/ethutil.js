@@ -1,24 +1,35 @@
 import * as ethjs from 'ethereumjs-util';
-import TruffleContract from '@truffle/contract';
 
 let web3;
 
-export const setWeb3 = (_web3) => {
-  web3 = _web3;
+export class ContractInstance {
+  abi;
+  bytecode;
+  defaults;
+  instance;
+
+  constructor (json, defaults) {
+    this.abi = json.abi;
+    this.bytecode = json.bytecode
+    this.defaults = defaults;
+  }
+
+  at = async(address) => {
+    this.instance = new web3.eth.Contract(this.abi, address, this.defaults);
+    return this.instance;
+  };
+  new = async(inputs) => {
+      const newInstance = await new web3.eth.Contract(this.abi).deploy({
+        data: this.bytecode,
+        arguments: inputs
+      }).send(this.defaults)
+      this.instance = newInstance;
+      return this.instance;
+  }
 }
 
-export const getTruffleContract = (jsonABI, defaults = {}) => {
-  // // HACK: Doing this here instead of `import` so that the project uses the web3.js version
-  // // defined in `package.json` instead of relying on Truffle dependencies (that use an old version).
-  // // With this, MetaMask v9 deprecation warnings are removed. 
-  // const TruffleContract = require('@truffle/contract');
-  
-  const truffleContract = TruffleContract(jsonABI);
-  if(!defaults.gasPrice) defaults.gasPrice = 20000000000;
-  // if(!defaults.gas) defaults.gas = 200000;
-  truffleContract.defaults(defaults);
-  truffleContract.setProvider(web3.currentProvider);
-  return truffleContract;
+export const setWeb3 = (_web3) => {
+  web3 = _web3;
 }
 
 export const getBalance = (address) => {
