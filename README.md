@@ -9,14 +9,14 @@ _Level PR's are welcome!_
 ### Deployed Versions
 
 You can find the current, official version at:
-[ethernaut.zeppelin.solutions](https://ethernaut.zeppelin.solutions)
+[ethernaut.zeppelin.solutions]
 
 ### Running locally (local network)
 
 1. Install
 
 ```
-git clone git@github.com:OpenZeppelin/ethernaut.git
+git clone <URL>
 npm install
 ```
 
